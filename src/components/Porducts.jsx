@@ -1,13 +1,12 @@
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import ProductCard from "./ProductCard";
-import { data } from "../utils/data";
+import data from "../utils/data.json";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
     minWidth: 800,
-    maxHeight: "100vh",
     padding: 0,
     margin: 0,
   },
@@ -16,7 +15,7 @@ const useStyles = makeStyles({
 const Products = ({ AddItem }) => {
   const classes = useStyles();
 
-  //Extract the Photoa from the data.
+  //Extract the Photos from the data.
   const { photos } = data;
 
   return (
