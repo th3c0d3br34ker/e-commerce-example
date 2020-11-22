@@ -4,6 +4,7 @@ import ProductCard from "./ProductCard";
 import Toast from "../utils/Toast";
 import data from "../utils/data.json";
 import { makeStyles } from "@material-ui/core/styles";
+import { useState } from "react";
 
 const useStyles = makeStyles({
   root: {
@@ -13,8 +14,22 @@ const useStyles = makeStyles({
   },
 });
 
-const Products = ({ AddItem, show, setShow }) => {
+const Products = ({ cart, onAddItem }) => {
   const classes = useStyles();
+
+  // State to show/hide the toast.
+  const [show, setShow] = useState(false);
+
+  const AddItem = (item) => {
+    // Logic to check if the item already exists.
+    if (cart.includes(item)) {
+      // If Item is already present then show a Toast.
+      setShow(true);
+    } else {
+      // Else call the onAddItem function.
+      onAddItem(item);
+    }
+  };
 
   return (
     <Container className={classes.root}>
@@ -25,6 +40,7 @@ const Products = ({ AddItem, show, setShow }) => {
           </Box>
         ))}
       </Box>
+
       <Toast
         show={show}
         setShow={setShow}

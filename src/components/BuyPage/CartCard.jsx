@@ -24,8 +24,9 @@ const useStyles = makeStyles({
   },
 });
 
-const CartItem = ({ cartItem }) => {
+const CartCard = ({ cartItem }) => {
   const classes = useStyles();
+
   const { id, src, photographer, width, height, cost } = cartItem;
 
   return (
@@ -52,4 +53,4 @@ const CartItem = ({ cartItem }) => {
   );
 };
 
-export default CartItem;
+export default CartCard;

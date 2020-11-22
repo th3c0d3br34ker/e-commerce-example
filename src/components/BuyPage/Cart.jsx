@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import CartItem from "./CartProduct";
+import CartCard from "./CartCard";
 import Container from "@material-ui/core/Container";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import Typography from "@material-ui/core/Typography";
@@ -26,6 +26,8 @@ const useStyles = makeStyles({
 
 const Cart = ({ cart, handleBuy }) => {
   const classes = useStyles();
+
+  // State to keep track of the total cost.
   const [totalCost, setTotalCost] = useState(0);
 
   // totalCost to get the total Cost of the items in the cart.
@@ -38,10 +40,11 @@ const Cart = ({ cart, handleBuy }) => {
     <Container className={classes.root}>
       {cart.map((cartInfo) => (
         <Box m={1} key={cartInfo.id}>
-          <CartItem cartItem={cartInfo} />
+          <CartCard cartItem={cartInfo} />
         </Box>
       ))}
 
+      {/* Only Show if the totalCost is not 0 */}
       {totalCost ? (
         <Box m={2} display="flex" justifyContent="space-between">
           <Button

@@ -21,10 +21,12 @@ const useStyles = makeStyles({
 const BuyPage = ({ cart, onBuyItems }) => {
   const classes = useStyles();
 
+  // State to show/hide the toast.
   const [show, setShow] = useState(false);
 
   const handleBuy = () => {
     // Don't call the function if Cart is EMPTY.
+    // This prevents some unnecessary reders.
     if (cart.length !== 0) {
       onBuyItems();
       setShow(true);
@@ -45,7 +47,9 @@ const BuyPage = ({ cart, onBuyItems }) => {
           </Toolbar>
         </AppBar>
       </Box>
+
       <Cart cart={cart} handleBuy={handleBuy} />
+
       <Toast
         show={show}
         setShow={setShow}

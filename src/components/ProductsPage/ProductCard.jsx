@@ -14,6 +14,8 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 350,
     margin: "auto 0",
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    color: "white",
   },
   media: {
     borderRadius: "8px",
@@ -22,7 +24,7 @@ const useStyles = makeStyles({
     borderRadius: "8px",
   },
   by: {
-    color: "grey",
+    color: "white",
     fontSize: "13px",
     padding: "8px 8px 0 0",
     float: "right",
@@ -34,13 +36,12 @@ const useStyles = makeStyles({
   },
   infoData: {
     padding: "8px",
-    color: "rgb(0 0 0 / 0.8)",
+    color: "rgb(255 255 255 / 0.8)",
   },
   button: {
-    "backgroundColor": "grey",
-    "color": "white",
+    "backgroundColor": "rgba(255, 255, 255, 1)",
     "&:hover": {
-      backgroundColor: "white",
+      backgroundColor: "rgba(255, 255, 255, 1)",
       color: "black",
     },
     "textTransform": "none",
@@ -63,7 +64,7 @@ const ProductCard = ({ photoInfo, AddItem }) => {
   } = photoInfo;
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} elevation={8}>
       <CardContent className={classes.cardBody}>
         {/* Image of the Card */}
         <CardMedia
