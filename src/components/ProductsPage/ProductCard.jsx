@@ -37,18 +37,20 @@ const useStyles = makeStyles({
     color: "rgb(0 0 0 / 0.8)",
   },
   button: {
-    // "border": "1px solid black",
     "backgroundColor": "grey",
     "color": "white",
     "&:hover": {
       backgroundColor: "white",
       color: "black",
     },
+    "textTransform": "none",
   },
 });
 
 const ProductCard = ({ photoInfo, AddItem }) => {
   const classes = useStyles();
+
+  // Destructure data to display.
   const {
     id,
     photographer,
@@ -57,6 +59,7 @@ const ProductCard = ({ photoInfo, AddItem }) => {
     width,
     height,
     url,
+    cost,
   } = photoInfo;
 
   return (
@@ -91,7 +94,8 @@ const ProductCard = ({ photoInfo, AddItem }) => {
           Original Resolution: {width}x{height}
         </Typography>
 
-        <CardActions>
+        {/* Buttons calling to action */}
+        <CardActions style={{ justifyContent: "space-evenly" }}>
           <Button
             className={classes.button}
             size="medium"
@@ -101,7 +105,7 @@ const ProductCard = ({ photoInfo, AddItem }) => {
             variant="outlined"
             endIcon={<AddShoppingCartIcon />}
           >
-            Add Item
+            Cost: ₹{cost}
           </Button>
           <Button
             className={classes.button}

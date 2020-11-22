@@ -4,9 +4,6 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-// import Button from "@material-ui/core/Button";
-// import CardActions from "@material-ui/core/CardActions";
-
 const useStyles = makeStyles({
   root: {
     margin: "auto 0",
@@ -29,7 +26,7 @@ const useStyles = makeStyles({
 
 const CartItem = ({ cartItem }) => {
   const classes = useStyles();
-  const { id, src, photographer, width, height } = cartItem;
+  const { id, src, photographer, width, height, cost } = cartItem;
 
   return (
     <Card className={classes.root}>
@@ -47,6 +44,8 @@ const CartItem = ({ cartItem }) => {
           id: #{id}
           <br />
           Original Resolution: {width}x{height}
+          <br />
+          Cost: ₹ {cost}
         </Typography>
       </CardContent>
     </Card>

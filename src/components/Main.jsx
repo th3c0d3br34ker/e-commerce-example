@@ -1,10 +1,11 @@
 import { Fragment, useState } from "react";
 
-import Cart from "./Cart";
-import Products from "./Porducts";
+import BuyPage from "./BuyPage/BuyPage";
+import Products from "./ProductsPage/ProductsPage";
 
 const Main = () => {
   const [cart, setCart] = useState([]);
+  const [show, setShow] = useState(false);
 
   // AddItem function to handle Add Item Event.
   // Takes the item to be added as a parameter.
@@ -12,6 +13,8 @@ const Main = () => {
     // Logic to check if the item already exists.
     if (!cart.includes(item)) {
       setCart([...cart, item]);
+    } else {
+      setShow(true);
     }
   };
 
@@ -23,8 +26,8 @@ const Main = () => {
 
   return (
     <Fragment>
-      <Products AddItem={AddItem} />
-      <Cart cart={cart} onBuyItems={BuyItems} />
+      <Products AddItem={AddItem} show={show} setShow={setShow} />
+      <BuyPage cart={cart} onBuyItems={BuyItems} />
     </Fragment>
   );
 };
