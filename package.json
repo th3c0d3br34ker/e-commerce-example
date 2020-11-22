@@ -1,6 +1,7 @@
 {
   "name": "e-commerce-cart",
   "version": "0.1.0",
+  "homepage": "https://th3c0d3br34ker.github.io/e-commerce-example/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.0",
