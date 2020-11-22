@@ -18,16 +18,20 @@ const Products = ({ cart, onAddItem }) => {
   const classes = useStyles();
 
   // State to show/hide the toast.
-  const [show, setShow] = useState(false);
+  const [addItemToast, setAddItemToast] = useState(false);
+  const [itemPresentToast, setItemPresentToast] = useState(false);
 
   const AddItem = (item) => {
     // Logic to check if the item already exists.
     if (cart.includes(item)) {
       // If Item is already present then show a Toast.
-      setShow(true);
+      setAddItemToast(false);
+      setItemPresentToast(true);
     } else {
-      // Else call the onAddItem function.
+      // Else call the onAddItem function then show a Toast.
       onAddItem(item);
+      setItemPresentToast(false);
+      setAddItemToast(true);
     }
   };
 
@@ -42,8 +46,15 @@ const Products = ({ cart, onAddItem }) => {
       </Box>
 
       <Toast
-        show={show}
-        setShow={setShow}
+        show={addItemToast}
+        setShow={setAddItemToast}
+        severity="success"
+        message="Item added Successfully"
+      />
+
+      <Toast
+        show={itemPresentToast}
+        setShow={setItemPresentToast}
         severity="error"
         message="Item already present!"
       />
